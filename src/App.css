@@ -1,0 +1,119 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #ffe6e6;
+  /* Soft romantic pink background */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.proposal-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1rem, 4vw, 2rem);
+  background-color: white;
+  padding: clamp(1.5rem, 5vw, 3rem);
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(255, 105, 180, 0.2);
+  width: 90%;
+  max-width: 600px;
+}
+
+h1 {
+  font-size: clamp(2rem, 6vw, 3rem);
+  color: #ff4d4d;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.success-container h1 {
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  color: #ff3366;
+  animation: bounce 1s ease infinite alternate;
+}
+
+.success-container p {
+  font-size: clamp(1rem, 4vw, 1.5rem);
+  color: #ff6699;
+  font-weight: bold;
+}
+
+.gif-container img,
+.celebration-gif {
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  /* Allows buttons to wrap on very small screens */
+  gap: clamp(1rem, 3vw, 2rem);
+  margin-top: 1rem;
+  position: relative;
+  /* Need this for absolute positioning of No button within flow initially */
+  width: 100%;
+  justify-content: center;
+  min-height: 60px;
+  /* Reserve space so Yes button doesn't jump when No becomes absolute */
+}
+
+button {
+  padding: clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 5vw, 3rem);
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  font-weight: bold;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+.yes-button {
+  background-color: #ff4d4d;
+  color: white;
+  box-shadow: 0 4px 15px rgba(255, 77, 77, 0.4);
+}
+
+.yes-button:hover {
+  background-color: #ff1a1a;
+  transform: scale(1.05);
+}
+
+.no-button {
+  background-color: #f0f0f0;
+  color: #666;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Base animations */
+@keyframes bounce {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-20px);
+  }
+}
