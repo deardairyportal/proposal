@@ -56,13 +56,13 @@ function App() {
 
   const getNoButtonText = () => {
     const phrases = [
-      "No 🫣",
-      "Please think again once again 🙏",
-      "Are you really sure? 🤨",
+      "No aa...🫣",
+      "Please inkosari alochinchu 🙏",
+      "Are you sure bangaram? 🤨",
       "Last chance esthunna baaga alochinchuko 😤",
       "Arey neeku heart leedhu abhaa... 💔",
       "koncham jaali chupetachu kadhaa 🥺",
-      "Is that your final answer? 😰",
+      "NO ne  final answer aa.? 😰",
       "Neeku vere option leedhu 🙅‍♂️ Yes cheppu",
       "Nee opika, try chesuko neeku no option leedhu 🤷‍♂️",
       "you don't have other option 😎 Say Yes",
