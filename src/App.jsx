@@ -1,12 +1,20 @@
 import { useState, useRef, useEffect } from 'react'
 import './App.css'
+import successGif1 from './assets/gifs/bear-kiss-bear-kisses.gif'
+import successGif2 from './assets/gifs/cute-cartoon.gif'
+import requestGif from './assets/gifs/request-propose.gif'
+import successMusic from './assets/music/Thodakkam_Mangalyam.mp3'
 
 function App() {
   const [accepted, setAccepted] = useState(false)
   const [noButtonPosition, setNoButtonPosition] = useState({ top: 'auto', left: 'auto', position: 'relative' })
+  const [noCount, setNoCount] = useState(0)
+  const [successGifIndex, setSuccessGifIndex] = useState(0)
   const noButtonRef = useRef(null)
 
   const handleNoInteraction = () => {
+    setNoCount(prev => prev + 1)
+
     if (!noButtonRef.current) return
 
     const buttonWidth = noButtonRef.current.offsetWidth
@@ -46,6 +54,22 @@ function App() {
     })
   }
 
+  const getNoButtonText = () => {
+    const phrases = [
+      "No 🫣",
+      "Please think again once again 🙏",
+      "Are you really sure? 🤨",
+      "Last chance esthunna baaga alochinchuko 😤",
+      "Arey neeku heart leedhu abhaa... 💔",
+      "koncham jaali chupetachu kadhaa 🥺",
+      "Is that your final answer? 😰",
+      "Neeku vere option leedhu 🙅‍♂️ Yes cheppu",
+      "Nee opika, try chesuko neeku no option leedhu 🤷‍♂️",
+      "you don't have other option 😎 Say Yes",
+    ]
+    return phrases[Math.min(noCount, phrases.length - 1)]
+  }
+
   // Also handle window resize to prevent button getting stuck off-screen
   useEffect(() => {
     const handleResize = () => {
@@ -71,14 +95,27 @@ function App() {
   }, [noButtonPosition])
 
 
+  const successGifs = [successGif1, successGif2]
+
+  useEffect(() => {
+    if (accepted) {
+      const interval = setInterval(() => {
+        setSuccessGifIndex(prev => (prev + 1) % successGifs.length)
+      }, 2500)
+      return () => clearInterval(interval)
+    }
+  }, [accepted])
+
   if (accepted) {
     return (
       <div className="proposal-container success-container">
-        <h1>YAAAAY! 🎉❤️</h1>
+        <audio autoPlay loop src={successMusic} />
+        <h1>Love Youuuu.. 🎉❤️</h1>
         <p>You made me the happiest person in the world!</p>
+        <p>Pelli date fix chesko mari 😜</p>
         <img
-          src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif"
-          alt="Happy bears kissing"
+          src={successGifs[successGifIndex]}
+          alt="Happy celebration"
           className="celebration-gif"
         />
       </div>
@@ -88,10 +125,13 @@ function App() {
   return (
     <div className="proposal-container">
       <h1>Will you marry me? 💍</h1>
+      <p style={{ color: '#ff4d4d', fontSize: '1.2rem', fontWeight: 'bold', margin: '0' }}>
+        {getNoButtonText()}
+      </p>
 
       <div className="gif-container">
         <img
-          src="https://media.tenor.com/I7KdQlpiUvwAAAAM/tkthao219-bubududu.gif"
+          src={requestGif}
           alt="Cute begging bear"
         />
       </div>
